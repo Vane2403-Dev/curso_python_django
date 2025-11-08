@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+  <h2>📋 Proyectos</h2>
+
+  <!-- Crear proyecto -->
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card p-3 shadow-sm mb-3">
+        <h5>Crear Proyecto</h5>
+        <form method="post">
+          {% csrf_token %}
+          {{ proyecto_form.as_p }}
+          <button name="guardar_proyecto" class="btn btn-primary btn-sm mt-2">Guardar Proyecto</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <!-- Crear lista -->
+      <div class="card p-3 shadow-sm mb-3">
+        <h5>Crear Lista</h5>
+        <form method="post">
+          {% csrf_token %}
+          {{ lista_form.as_p }}
+          <button name="guardar_lista" class="btn btn-success btn-sm mt-2">Guardar Lista</button>
+        </form>
+      </div>
+
+      <!-- Botón para crear tarea -->
+      <div class="card p-3 shadow-sm mb-3">
+        <h5>Crear Tarea</h5>
+        <a href="{% url 'crear_tarea' %}" class="btn btn-success btn-sm mt-2">Nueva Tarea</a>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- Mostrar proyectos -->
+  {% for proyecto in proyectos %}
+    <div class="card p-3 mb-3 shadow-sm">
+      <h3>{{ proyecto.nombre }}</h3>
+      {% if proyecto.descripcion %}
+        <p><em>{{ proyecto.descripcion }}</em></p>
+      {% endif %}
+
+      <h5>Listas:</h5>
+      {% for lista in proyecto.listas.all %}
+        <div class="ms-3 mb-2">
+          <strong>{{ lista.nombre }}</strong>
+          <ul>
+            {% for tarea in lista.tareas.all %}
+              <li>{{ tarea.titulo }} - {{ tarea.descripcion }}</li>
+            {% empty %}
+              <li><em>Sin tareas aún</em></li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% empty %}
+        <p><em>Sin listas</em></p>
+      {% endfor %}
+    </div>
+  {% empty %}
+    <p>No hay proyectos todavía.</p>
+  {% endfor %}
+</div>
+{% endblock %}

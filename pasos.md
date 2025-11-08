@@ -3,7 +3,7 @@
 1. creamos una carpeta donde vamos a meter el proyecto
 2. entramos en la carpeta y la abrimos con vscode
 3. creamos el archivo .gitignore le guardamos lo generado por la pagina [gitignore.io](https://gitignore.io) seleccionando lo que van a utilizar (en nuestro caso `visualstudiocode`, `python` y `django`)
-4. creamos el entorno virtual `python -m venv <nombre_de_la_carpeta_que_contiene_el_entorno_virtual>` (`*`)
+4. creamos el entorno virtual `python -m venv .venv` (`*`)
 5. agregar el nombre del entonrno virtual al .gitignore (`*`)
 6. inicializamos git
 7. creamos el primer commit
