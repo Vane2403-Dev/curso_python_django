@@ -283,3 +283,11 @@ pyrightconfig.json
 .ionide
 
 # End of https://www.toptal.com/developers/gitignore/api/python,visualstudiocode,django
+
+# Carpetas y archivos que NO deben subir al repositorio
+__pycache__/
+*.pyc
+
+db.sqlite3
+
+media/

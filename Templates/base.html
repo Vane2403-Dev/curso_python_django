@@ -9,6 +9,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
   <a class="navbar-brand" href="/">🗂️ Gestor de Tareas</a>
   <div class="navbar-nav">
+    <a class="nav-link" href="{% url 'about' %}">Acerca de mí</a>
     <a class="nav-link" href="/">Panel</a>
     <a class="nav-link" href="/tarea/">Nueva Tarea</a>
     {% if request.user.is_authenticated %}
