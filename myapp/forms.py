@@ -5,7 +5,7 @@ from .models import Proyecto, Lista, Tarea
 class ProyectoForm(forms.ModelForm):
     class Meta:
         model = Proyecto
-        fields = ['nombre', 'descripcion']
+        fields = ['nombre']
 
 
 class ListaForm(forms.ModelForm):

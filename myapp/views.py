@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.http import HttpResponse
 from .models import Proyecto, Lista, Tarea
 from .forms import ProyectoForm, ListaForm, TareaForm
 
@@ -35,3 +36,7 @@ def crear_tarea(request):
         form.save()
         return redirect('home')
     return render(request, "tarea_form.html", {"form": form})
+
+
+
+   

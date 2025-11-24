@@ -1,0 +1,22 @@
+{{
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact",
+    "vue-html": "html",
+    "plaintext": "html"
+  },
+  "emmet.triggerExpansionOnTab": true,
+  "emmet.preferences": {
+    "filter.commentAfter": "expanded"
+  },
+  "emmet.variables": {
+    "lang": "es",
+    "charset": "UTF-8"
+  },
+  "emmet.syntaxProfiles": {
+    "html": {
+      "self_closing_tag": "xhtml"
+    }
+  }
+}
+
+}
