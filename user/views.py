@@ -3,6 +3,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.models import User
 from django.db import IntegrityError
+from .forms import ProfileForm
+from django.contrib.auth.decorators import login_required
 
 def crear_usuario(request):
     if request.method == "GET":
@@ -55,3 +57,16 @@ def login_view(request):
     usuario = form.get_user()
     login(request, usuario)
     return redirect("home")
+
+@login_required
+def editar_perfil(request):
+    profile = request.user.profile
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, request.FILES, instance=profile)
+        if form.is_valid():
+            form.save()
+            return redirect('home')  # o donde quieras redirigir
+    else:
+        form = ProfileForm(instance=profile)
+    
+    return render(request, 'editar_perfil.html', {'form': form})
